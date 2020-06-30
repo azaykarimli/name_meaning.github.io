@@ -1,0 +1,61 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table for requested files</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+
+
+        $(document).ready(function () {
+            $("#access").click(function () {
+                $.get("https://api.opendata.az/v1/json/home/MeaningOfName/Azay?pretty", function (data, status) {
+
+                    console.log(data);
+
+                    if ($("#inputed").val() === data.Response.Name) {
+                        $("#sec").text("Data: " + data.Response.Meaning + "\nStatus: " + status);
+
+                    }
+
+                    else {
+                        $("#sec").text("Data: " + "Sorry you have stupid name" + "\nStatus: " + status);
+                    }
+
+
+
+
+
+
+
+                });
+            });
+        });
+
+
+
+    </script>
+</head>
+
+<body>
+
+    <div>
+        <form>
+
+            <label for="Name">Enter name</label>
+
+            <input type="text" name="Name" id="inputed">
+
+
+
+        </form>
+    </div>
+    <button id="access">Access</button>
+    <p id="sec">Hi there</p>
+
+
+</body>
+
+</html>
